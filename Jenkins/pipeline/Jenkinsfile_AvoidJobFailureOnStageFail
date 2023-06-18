@@ -3,20 +3,21 @@ pipeline {
 	stages {
 		stage('BUILD') {
 			steps {
-				catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-					sh 'sleep 5'
-					sh 'exit 1'
-				}	
+				
+					sh 'sleep 5; This is the Build stage'
+					
 			}	
 		}
 		
 		stage('TEST') {
 			steps {
+				catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
 				sh '''
 					pwd
 					sleep 5
 					echo This is the fist stage: TEST
 				'''
+				}
 			}	
 		}
 		
